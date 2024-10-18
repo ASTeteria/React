@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getUsers} from "../../services/api.services";
 import User from "../user/User";
-import user from "../user/User";
 import {IUser} from "../../models/IUser";
 
 

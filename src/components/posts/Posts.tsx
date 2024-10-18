@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getPosts} from "../../services/api.services";
 import Post from "../post/Post";
-import user from "../user/User";
 import {IPost} from "../../models/IPost";
 
 
