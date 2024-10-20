@@ -1,6 +1,6 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import {useSearchParams} from "react-router-dom";
-import {apiService} from "../services/api.service";
+
 
 type PaginationProps = { dot: boolean };
 const PaginationComponent: FC<PaginationProps> = ({dot}) => {
