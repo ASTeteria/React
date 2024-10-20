@@ -25,7 +25,7 @@ const UsersPage = () => {
                         setDot(false);
 
                     }
-                    console.log(lastId);
+
                 });
 
         }
