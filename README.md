@@ -1,3 +1,6 @@
+# HW4
+Взяти з dummyjson будь-який ендпоінт, який повертає багато об'єктів (products,carts,users etc...), та реалізувати пагінацію цих об'єктів. Крок пагінації ви визначаєте самостійно
+
 # Project location
 https://github.com/ASTeteria/React
 
