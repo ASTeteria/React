@@ -13,7 +13,7 @@ type PostProps = {
     const customHandler = (data: PostProps) => {
         createPost(data).then(response => {
             console.log(response);
-            alert('Post created successfully');
+            alert('Post created');
         })
     };
 
