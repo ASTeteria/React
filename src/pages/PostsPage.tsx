@@ -8,12 +8,12 @@ import PostForm from '../components/PostForm';
 const PostsPage:FC = () => {
     const [posts, setPosts] = useState<IPosts[]>([]);
   
-    const Posts = async () => {
+    const withPosts = async () => {
       const allPosts = await getAllPosts();
       setPosts(allPosts);
     };
   
-    useEffect(() => {Posts();}, []);
+    useEffect(() => {withPosts();}, []);
   
     
     const handleNewPost = (newPost: IPosts) => {
