@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {FC, useEffect} from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { useZuStore } from './store/useZuStore';
+import router from './routes/routes';
 
-import './App.css';
+const App: FC = () => {
+  const allInfo = useZuStore((state) => state.zuData);
 
-function App() {
-  return (
-    <div>
+  useEffect(() => {
+    allInfo();
+  }, [allInfo]);
 
-
-    </div>
-  );
-}
+  return <RouterProvider router={router} />;
+};
 
 export default App;
