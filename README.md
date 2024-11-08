@@ -1,3 +1,11 @@
+# HW8
+Додати в існуючу логіку сторінку з комментарями та сторінку постів+ комментарів. Звісно все робиться через redux
+логіку запитів виносити в сервіси
+для users/posts/comments/comments+posts окремі сторінки
+
+
+
+
 # Project location
 https://github.com/ASTeteria/React
 
