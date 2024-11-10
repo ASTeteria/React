@@ -5,11 +5,16 @@ import { loadUsers } from '../Slices/usersSlice';
 
 const UsersPage:FC = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { users} = useSelector((state: RootState) => state.users);
+    const { users, loading, error} = useSelector((state: RootState) => state.users);
 
     useEffect(() => {
         dispatch(loadUsers());
     }, [dispatch]);
+
+    if (loading) return <p>Loading users...</p>;
+    if (error) return <p>Error loading users: {error}</p>;
+
+
         return (
         <div>
             <h1>Users</h1>

@@ -1,6 +1,7 @@
 import {IPost} from "../models/IPost";
 import {createAsyncThunk, createSlice, isFulfilled, isRejected, PayloadAction} from "@reduxjs/toolkit";
 import {getPosts} from "../services/postService";
+import {getUsers} from "../services/userService";
 
 interface PostsState {
     posts: IPost[];
@@ -14,9 +15,15 @@ const initialState: PostsState = {
     error: null,
 };
 
-export const loadPosts = createAsyncThunk('posts/loadPosts', async ()=>{
-    const posts = await getPosts();
-    return posts;
+export const loadPosts = createAsyncThunk('posts/loadPosts', async (_, ThunkAPI)=>{
+    try {
+        return await getPosts();
+    } catch (e) {
+        if (e instanceof Error) {
+            return ThunkAPI.rejectWithValue(e.message);
+        }
+        return ThunkAPI.rejectWithValue('Error');
+    }
 });
 
 const postsSlice = createSlice({

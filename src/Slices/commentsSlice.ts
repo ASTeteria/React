@@ -3,6 +3,7 @@
 import { createSlice, createAsyncThunk, PayloadAction, isFulfilled, isRejected } from '@reduxjs/toolkit';
 import { getComments } from '../services/commentService';
 import { IComment } from '../models/IComment';
+import {getPosts} from "../services/postService";
 
 interface CommentsState {
     comments: IComment[];
@@ -16,9 +17,15 @@ const initialState: CommentsState = {
     error: null,
 };
 
-export const loadComments = createAsyncThunk('comments/loadComments', async () => {
-    const comments = await getComments(); // Викликаємо функцію сервісу для отримання коментарів
-    return comments;
+export const loadComments = createAsyncThunk('comments/loadComments', async (_,ThunkAPI) => {
+    try {
+        return await getComments();
+    } catch (e) {
+        if (e instanceof Error) {
+            return ThunkAPI.rejectWithValue(e.message);
+        }
+        return ThunkAPI.rejectWithValue('Error');
+    }
 });
 
 const commentsSlice = createSlice({

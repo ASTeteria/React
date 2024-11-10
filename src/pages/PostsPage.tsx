@@ -5,12 +5,14 @@ import { loadPosts } from '../Slices/postsSlice';
 
 const PostsPage:FC = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { posts} = useSelector((state: RootState) => state.posts);
+    const { posts, loading, error} = useSelector((state: RootState) => state.posts);
 
     useEffect(() => {
         dispatch(loadPosts());
     }, [dispatch]);
 
+    if (loading) return <p>Loading posts...</p>;
+    if (error) return <p>Error loading posts: {error}</p>;
 
 
     return (

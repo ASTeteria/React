@@ -5,12 +5,17 @@ import { loadComments } from '../Slices/commentsSlice';
 
 const CommentsPage:FC = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { comments} = useSelector((state: RootState) => state.comments);
+    const { comments, loading, error} = useSelector((state: RootState) => state.comments);
 
     useEffect(() => {
         dispatch(loadComments());
     }, [dispatch]);
-       return (
+
+    if (loading) return <p>Loading users...</p>;
+    if (error) return <p>Error loading users: {error}</p>;
+
+
+    return (
         <div>
             <h1>Comments</h1>
             <ul>

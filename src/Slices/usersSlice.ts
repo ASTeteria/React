@@ -14,9 +14,15 @@ const initialState: UsersState = {
     error: null,
 }
 
-export const loadUsers = createAsyncThunk('users/loadUsers', async ()=> {
-    const users = await getUsers();
-    return users;
+export const loadUsers = createAsyncThunk('users/loadUsers', async (_, ThunkAPI)=> {
+    try {
+        return await getUsers();
+    } catch (e) {
+        if (e instanceof Error) {
+            return ThunkAPI.rejectWithValue(e.message);
+        }
+        return ThunkAPI.rejectWithValue('Error');
+    }
 });
 
 const usersSlice = createSlice({
